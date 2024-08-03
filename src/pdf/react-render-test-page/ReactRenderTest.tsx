@@ -1,9 +1,12 @@
 import {Document, Page, StyleSheet, Text, View} from "@react-pdf/renderer";
+import {LinesSvg} from "./LinesSvg.tsx";
 
 const styles = StyleSheet.create({
-    page1: {
-        flexDirection: 'row',
-        backgroundColor: '#E4E4E4'
+    cover: {
+        backgroundColor: "#1E2327",
+    },
+    page: {
+        flexDirection: 'row'
     },
     section: {
         margin: 10,
@@ -39,15 +42,10 @@ const styles = StyleSheet.create({
 // Create Document Component
 export const MyDocument = () => (
     <Document>
-        <Page size="A4" style={styles.page1}>
-            <View style={styles.section}>
-                <Text>Section #1</Text>
-            </View>
-            <View style={styles.section}>
-                <Text>Section #2</Text>
-            </View>
+        <Page size="A4" style={[styles.cover, styles.page]} orientation={"landscape"}>
+            <LinesSvg />
         </Page>
-        <Page size="A4" style={styles.page1} orientation={"landscape"}>
+        <Page size="A4" style={styles.page} orientation={"landscape"}>
             <View style={styles.main}>
                 <Text style={styles.title}>This is the Main title</Text>
                 <Text style={styles.text}>This is the body of the Main, and I'm going to try to give it a little flesh, just to test it out! I wonder, if I make the text even longer will it break appropriately? Or will it spill into the Aside, just because maybe that's something it does...</Text>
